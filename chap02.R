@@ -328,6 +328,22 @@ log(x)
 ifelse(x > 0, x, NA)
 log(ifelse(x > 0, x, NA))
 
+# anonymous functions
+my.data <- matrix(runif(100), ncol = 5) #100 random number from uniform distribution in 5 cols
+apply(my.data, 2, median) /2
+
+# alternatively
+halfmedian <- function(x) {median(x) / 2}
+apply(my.data, 2, halfmedian)
+
+# alternatively with anonymous function
+apply(my.data, 2, function(x) {median(x)/2})
+
+# cleaning up after work
+ls(pattern = "store")
+rm(list = ls(pattern = "store"))
+
+
 list.files()
 file.remove(c("mySession_1126.RData","mySession_1126_2.RData"))
 # saving a working session in .RData file
